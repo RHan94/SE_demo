@@ -1,0 +1,13 @@
+node_modules/
+dist/
+out/
+build/
+release/
+*.log
+.env
+.DS_Store
+.vscode/
+.idea/
+*.asar
+*.zip
+*.7z

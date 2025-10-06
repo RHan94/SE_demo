@@ -1,0 +1,25 @@
+﻿{
+  "name": "uml-architect",
+  "version": "0.1.0",
+  "description": "Electron app that generates UML architecture diagrams from prompts via OpenAI",
+  "main": "dist/main/main.js",
+  "scripts": {
+    "build": "tsc --project tsconfig.json && node scripts/copy-static.js",
+    "start": "npm run build && electron .",
+    "lint": "tsc --noEmit --project tsconfig.json"
+  },
+  "keywords": [
+    "electron",
+    "uml",
+    "openai"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^29.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "typescript": "^5.4.3"
+  }
+}

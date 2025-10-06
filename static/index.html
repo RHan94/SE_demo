@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UML Architect</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" defer></script>
+    <script type="module" src="renderer.js" defer></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>UML Architect</h1>
+      <p>Describe the system you want to build and get a generated UML architecture diagram.</p>
+    </header>
+
+    <main class="app-main">
+      <section class="prompt-section">
+        <form id="prompt-form">
+          <label for="prompt">
+            Prompt
+            <span class="hint">Be specific about components, integrations, and constraints.</span>
+          </label>
+          <textarea
+            id="prompt"
+            name="prompt"
+            rows="6"
+            placeholder="e.g. Build a SaaS platform where users upload videos, processed by background workers, stored in cloud storage, and served via CDN."
+            required
+          ></textarea>
+          <div class="form-actions">
+            <button type="submit" id="generate-button">Generate Diagram</button>
+            <span class="status" id="status"></span>
+          </div>
+        </form>
+      </section>
+
+      <section class="result-section" id="result-section">
+        <div class="diagram-header">
+          <h2 id="diagram-title">Diagram Preview</h2>
+          <span class="badge" id="diagram-type"></span>
+        </div>
+        <div class="diagram-container" id="diagram-container">
+          <div class="placeholder">Submit a prompt to see the generated UML diagram.</div>
+        </div>
+        <section class="explanation" id="explanation"></section>
+        <section class="code-block" id="mermaid-code-block">
+          <div class="code-header">
+            <span>Mermaid Markup</span>
+            <button type="button" id="copy-button">Copy</button>
+          </div>
+          <pre><code id="mermaid-code"></code></pre>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

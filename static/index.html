@@ -14,44 +14,75 @@
       <p>Describe the system you want to build and get a generated UML architecture diagram.</p>
     </header>
 
-    <main class="app-main">
-      <section class="prompt-section">
-        <form id="prompt-form">
-          <label for="prompt">
-            Prompt
-            <span class="hint">Be specific about components, integrations, and constraints.</span>
-          </label>
-          <textarea
-            id="prompt"
-            name="prompt"
-            rows="6"
-            placeholder="e.g. Build a SaaS platform where users upload videos, processed by background workers, stored in cloud storage, and served via CDN."
-            required
-          ></textarea>
-          <div class="form-actions">
-            <button type="submit" id="generate-button">Generate Diagram</button>
-            <span class="status" id="status"></span>
-          </div>
-        </form>
-      </section>
+    <nav class="app-nav" aria-label="Primary">
+      <button type="button" class="nav-button nav-button-active" data-target="diagram">UML 頁面</button>
+      <button type="button" class="nav-button" data-target="code">程式碼頁面</button>
+    </nav>
 
-      <section class="result-section" id="result-section">
-        <div class="diagram-header">
-          <h2 id="diagram-title">Diagram Preview</h2>
-          <span class="badge" id="diagram-type"></span>
-        </div>
-        <div class="diagram-container" id="diagram-container">
-          <div class="placeholder">Submit a prompt to see the generated UML diagram.</div>
-        </div>
-        <section class="explanation" id="explanation"></section>
-        <section class="code-block" id="mermaid-code-block">
-          <div class="code-header">
-            <span>Mermaid Markup</span>
-            <button type="button" id="copy-button">Copy</button>
-          </div>
-          <pre><code id="mermaid-code"></code></pre>
+    <main class="app-main">
+      <div class="page page-active" data-page="diagram">
+        <section class="prompt-section">
+          <form id="prompt-form">
+            <label for="prompt">
+              Prompt
+              <span class="hint">Be specific about components, integrations, and constraints.</span>
+            </label>
+            <textarea
+              id="prompt"
+              name="prompt"
+              rows="6"
+              placeholder="e.g. Build a SaaS platform where users upload videos, processed by background workers, stored in cloud storage, and served via CDN."
+              required
+            ></textarea>
+            <div class="form-actions">
+              <button type="submit" id="generate-button">Generate Diagram</button>
+              <span class="status" id="status"></span>
+            </div>
+          </form>
         </section>
-      </section>
+
+        <section class="result-section" id="result-section">
+          <div class="diagram-header">
+            <h2 id="diagram-title">Diagram Preview</h2>
+            <span class="badge" id="diagram-type"></span>
+          </div>
+          <div class="diagram-container" id="diagram-container">
+            <div class="placeholder">Submit a prompt to see the generated UML diagram.</div>
+          </div>
+          <section class="explanation" id="explanation"></section>
+          <section class="code-block" id="mermaid-code-block">
+            <div class="code-header">
+              <span>Mermaid Markup</span>
+              <button type="button" id="copy-button">Copy</button>
+            </div>
+            <pre><code id="mermaid-code"></code></pre>
+          </section>
+        </section>
+      </div>
+
+      <div class="page" data-page="code">
+        <section class="code-section">
+          <div class="diagram-header">
+            <h2>Generated Code</h2>
+            <span class="badge hidden" id="code-language-badge"></span>
+          </div>
+          <p class="page-hint" id="code-hint">
+            先在 UML 頁面產生圖表，再回到這裡生成對應的程式碼。
+          </p>
+          <div class="form-actions">
+            <button type="button" id="generate-code-button">Generate Code</button>
+            <span class="status" id="code-status"></span>
+          </div>
+          <section class="explanation hidden" id="code-explanation"></section>
+          <section class="code-block hidden" id="generated-code-block">
+            <div class="code-header">
+              <span>Implementation</span>
+              <button type="button" id="copy-generated-code-button">Copy</button>
+            </div>
+            <pre><code id="generated-code"></code></pre>
+          </section>
+        </section>
+      </div>
     </main>
   </body>
 </html>

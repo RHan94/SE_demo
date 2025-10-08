@@ -1,6 +1,6 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'node:path';
-import { generateUmlFromPrompt } from './openaiService';
+import { generateCodeFromUml, generateUmlFromPrompt, type CodeGenerationRequest } from './openaiService';
 
 const isMac = process.platform === 'darwin';
 
@@ -57,6 +57,15 @@ app.on('window-all-closed', () => {
 ipcMain.handle('generate-uml', async (_event, prompt: string) => {
   try {
     return await generateUmlFromPrompt(prompt);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    throw new Error(message);
+  }
+});
+
+ipcMain.handle('generate-code', async (_event, request: CodeGenerationRequest) => {
+  try {
+    return await generateCodeFromUml(request);
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unknown error';
     throw new Error(message);
